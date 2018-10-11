@@ -9,6 +9,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
@@ -19,6 +21,8 @@ import com.bdi.sp.vo.Japan;
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
 public class SqlSessionFactoryTest {
 
+	private static final Logger logger = LoggerFactory.getLogger(SqlSessionFactoryTest.class);
+	
 	@Autowired
 	private SqlSessionFactory ssf;
 	
@@ -30,9 +34,15 @@ public class SqlSessionFactoryTest {
 		assertNotNull(ssf.openSession()); 
 	}
 	
+// 	trace > debug > info > warn > error > fatal
 	@Test
 	public void ssTest() {
-		List<Japan> jList = ss.selectList("com.bdi.sp.JapanMapper.selectJapanList");
+		logger.trace("난 안찍히나?");
+		logger.info("난 찍히지");
+		logger.debug("난 당연히 찍히지");
+		Japan j = new Japan();
+		j.setJpnum(1);
+		List<Japan> jList = ss.selectList("com.bdi.sp.JapanMapper.selectJapanList", j);
 		assertEquals(jList.size(), 3);
 	}
 }

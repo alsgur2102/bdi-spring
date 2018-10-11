@@ -5,5 +5,13 @@
 <mapper namespace="com.bdi.sp.JapanMapper">
   <select id="selectJapanList" resultType="com.bdi.sp.vo.Japan">
     select * from japan
+    <where>
+    	<if test="jpname!=null"> and jpname=#{jpname}</if>
+    	<if test="jpnum!=null"> and jpnum=#{jpnum}</if>
+    	<if test="jpdesc!=null"> and jpdesc=#{jpdesc}</if>
+    </where>
+  </select>
+  <select id="selectJapan" resultType="com.bdi.sp.vo.Japan">
+    select * from japan where jpnum=#{jpnum}
   </select>
 </mapper>
