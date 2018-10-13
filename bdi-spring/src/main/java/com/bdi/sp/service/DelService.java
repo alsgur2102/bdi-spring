@@ -12,8 +12,7 @@ public interface DelService {
 	
 	public int insertDel(Del d);
 	
-	public int updateDel(Del d);
-	
 	public int deleteDel(int d);
 	
+	public int updateDel(Del d);
 }

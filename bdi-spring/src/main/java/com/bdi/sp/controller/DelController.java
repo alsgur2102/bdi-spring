@@ -30,8 +30,8 @@ public class DelController {
 	}
 	
 	@RequestMapping(value="/del/{num}", method=RequestMethod.GET)
-	public @ResponseBody Del delList(@PathVariable Integer d) {
-		return ds.getDel(d);
+	public @ResponseBody Del delList(@PathVariable Integer num) {
+		return ds.getDel(num);
 	}
 	
 	@RequestMapping(value="/del/{num}", method=RequestMethod.POST)

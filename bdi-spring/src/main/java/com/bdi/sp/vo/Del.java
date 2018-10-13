@@ -24,6 +24,7 @@ public class Del {
 	public void setAge(String age) {
 		this.age = age;
 	}
+
 	@Override
 	public String toString() {
 		return "Del [num=" + num + ", name=" + name + ", age=" + age + "]";

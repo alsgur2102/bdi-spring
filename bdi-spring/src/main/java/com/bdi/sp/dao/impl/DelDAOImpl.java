@@ -15,7 +15,7 @@ public class DelDAOImpl implements DelDAO {
 	
 	@Override
 	public List<Del> getDelList(Del d) {
-		return ss.selectList("om.bdi.sp.DelMapper.selectDelList", d); 
+		return ss.selectList("com.bdi.sp.DelMapper.selectDelList", d); 
 	}
 
 	@Override
