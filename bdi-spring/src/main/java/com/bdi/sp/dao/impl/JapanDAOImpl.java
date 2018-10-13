@@ -24,4 +24,19 @@ public class JapanDAOImpl implements JapanDAO {
 	public Japan getJapan(int jpnum) {
 		return ss.selectOne("com.bdi.sp.JapanMapper.selectJapan",jpnum);
 	}
+
+	@Override
+	public int insertJapan(Japan j) {
+		return ss.insert("com.bdi.sp.JapanMapper.insertJapan",j);
+	}
+
+	@Override
+	public int deleteJapan(int j) {
+		return ss.delete("com.bdi.sp.JapanMapper.deleteJapan",j);
+	}
+
+	@Override
+	public int updateJapan(Japan j) {
+		return ss.update("com.bdi.sp.JapanMapper.updateJapan",j);
+	}
 }

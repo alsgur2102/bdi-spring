@@ -23,6 +23,8 @@ public class HomeController {
 	
 	@Autowired
 	private SqlSession ss;
+	
+	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
@@ -36,7 +38,7 @@ public class HomeController {
 		String formattedDate = dateFormat.format(date);
 		
 		model.addAttribute("serverTime", formattedDate );
-		model.addAttribute("jList", ss.selectList("com.bdi.sp.JapanMapper.selectJapanList"));
+		model.addAttribute("jList",ss.selectList("com.bdi.sp.JapanMapper.selectJapanList"));
 		
 		return "home";
 	}

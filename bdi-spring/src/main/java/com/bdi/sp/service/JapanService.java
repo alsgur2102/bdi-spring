@@ -1,20 +1,15 @@
-package com.bdi.sp.dao;
+package com.bdi.sp.service;
 
 import java.util.List;
 
 import com.bdi.sp.vo.Japan;
 
-public interface JapanDAO {
+public interface JapanService {
 
 	public List<Japan> getJapanList(Japan j);
-	
 	public Japan getJapan(int jpnum);
-	
 	public int insertJapan(Japan j);
-	
-	public int deleteJapan(int j);
-	
+	public int deleteJapan(int j);	
 	public int updateJapan(Japan j);
-	
 	
 }
