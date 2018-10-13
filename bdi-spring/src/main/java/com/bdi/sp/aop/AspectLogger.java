@@ -29,11 +29,11 @@ public class AspectLogger {
 			str += o.toString()+",";
 		}
 		
-		logger.debug("@Around start");	// 여기까지는 아직 실행 중
+		logger.debug("@Around start");	
 		logger.debug("{}.{}({})", new Object[] {sigName, tarName, str});
 		Object obj = null;
 		obj = pjp.proceed();
-		logger.debug("@Around end");
+		logger.debug("@Around end");	// 여기까지는 아직 실행 중
 		return obj;	// method가 끝나는 시점 
 	}
 	 
