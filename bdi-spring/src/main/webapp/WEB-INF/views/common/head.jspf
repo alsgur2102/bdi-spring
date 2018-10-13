@@ -1,3 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-저는 최상단입니다.<br>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="rootPath" value="${pageContext.request.contextPath}"></c:set>
+<c:set var="resPath" value="${rootPath}/resources"/>
+<link rel="stylesheet" type="text/css" href="${resPath}/dhtmlx/codebase/fonts/font_roboto/roboto.css"/>
+<link rel="stylesheet" type="text/css" href="${resPath}/dhtmlx/codebase/dhtmlx.css"/>
+<script src="${resPath}/dhtmlx/codebase/dhtmlx.js"></script>
