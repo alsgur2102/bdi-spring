@@ -20,7 +20,7 @@
 		jpGrid.init(); // 초기화
 		au.send({url : '/test/japans',success:function(res) {
 			res = JSON.parse(res);
-			jpGrid.parse(res, 'js');
+			jpGrid.parse(res, 'js');	// 'js' => javascript
 		}});
 	});
 </script>
