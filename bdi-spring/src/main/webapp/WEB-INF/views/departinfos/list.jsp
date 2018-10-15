@@ -12,17 +12,17 @@
 	window.addEventListener('load',function() {
 		jpGrid = new dhtmlXGridObject('divGrid');
 		jpGrid.setImagePath('${resPath}/dhtmlx/skins/skyblue/imgs/dhxgrid_skyblue/');
-		jpGrid.setHeader('번호,이름,설명');
-		jpGrid.setColumnIds('jpnum,jpname,jpdesc');
-		jpGrid.setColAlign('center,center,center');
-		jpGrid.setColTypes('ro,ed,ed');
-		jpGrid.setColSorting('int,str,str'); // 정렬
+		jpGrid.setHeader('부서번호,부서명,부서설명,부서인원');
+		jpGrid.setColumnIds('diNo,diName,diDesc,diCnt');
+		jpGrid.setColAlign('center,center,center,center');
+		jpGrid.setColTypes('ro,ed,ed,ed');
+		jpGrid.setColSorting('int,str,st,int'); // 정렬
 		jpGrid.init(); // 초기화
-		au.send({url : '/test/japans',success:function(res) {
+		au.send({url : '/test/departinfos',success:function(res) {
 			res = JSON.parse(res);
-			jpGrid.parse(res, 'js');
+			jpGrid.parse(res, 'js');	// 'js' => javascript
 		}});
-	});
+	})
 </script>
 </head>
 <body>
