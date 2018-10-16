@@ -7,23 +7,72 @@
 	<title>스프링테스트</title>
 </head>
 <script>
-	var dxForm;
+	/* var wWidth = screen.width;
+	var wHeight = screen.height;
+	alert('width : ' + wWidth + ", height : " + wHeight); */
+	var dxForm,dxWin;
+	var loginFormData = [
+		{type:'fieldset',name:'login',label:'login',inputWidth:'auto',
+			list : [
+				{type:'input',name:'id',label:'ID',validate:'ValidAplhaNumeric',required:true},
+				{type:'password',name:'pwd',label:'PWD',validate:'ValidAplhaNumeric',required:true},
+				{type:'button',name:'loginbtn',value:'LOGIN'}
+			]
+		}
+	];
 	function doInit() {
 		var forms = [
-			{type : 'settings', position : 'label-left', labelWidth : 100, inputWidth : 100},	
-			{type : 'fieldset', label : '부서', inputWidth : 150, list : [ 
+			/* {type:'settings', position:'label-left',labelWidth:100,inputWidth:100},	
+			{type:'fieldset', label:'부서',inputWidth:150,list : [ 
 				{type:'input',label:'test'}
-			]},
-			{type:'button',value:'버튼', name : 'btn'}
+			]}, */
+			{type:'button',value:'버튼',name:'btn'},
+			{type:'button',value:'오픈',name:'open'}
 		]
 		var dxForm = new dhtmlXForm('dxForm',forms);
 		dxForm.attachEvent('onButtonClick', function(name) {
-			alert(name);
+			if (name=='btn') {
+				alert(name);
+			} else if (name=='open') {
+				if (!dxWin) {
+					dxWin = new dhtmlXWindows();
+					dxWin.createWindow('w1',0,10,250,230);	// 생성
+					dxWin.window('w1').centerOnScreen();	// Screen정렬
+					var loginForm = new dhtmlXForm('loginForm',loginFormData);
+					dxWin.window('w1').attachObject('loginForm'); 
+					loginForm.attachEvent('onButtonClick',function(name) {
+						if(name=='loginbtn') {
+							if(loginForm.validate()) {
+								var id = loginForm.getItemValue('id');
+								var pwd = loginForm.getItemValue('pwd');
+								var conf = {
+									url:'/test/login',
+									method:'POST',
+									param : JSON.stringify({id:id,pwd:pwd}),
+									success : function(res) {
+										res = JSON.parse(res);
+										alert(res.msg);
+									}				
+								}
+								au.send(conf);
+							}
+						}
+					})
+				}
+			}
+			 /* dxForm.addItem(null,{type:'button',value:'숨김', name : 'hide'});
+				dxForm.addItem(null,{type:'button',value:'짜잔', name : 'show'});
+			} else if (name=='hide') {
+				dxWin.window('w1').hide();
+			} else if (name=='show') {
+				dxWin.window('w1').show();	 
+			} */
 		})
 	}
 	window.addEventListener('load',doInit);
 </script>
 <body>
 <div id="dxForm" style="height:100px"></div>
+<div id="loginForm" style="width:240px; height:200px"></div>
 </body>
 </html>
